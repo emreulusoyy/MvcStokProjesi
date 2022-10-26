@@ -1,0 +1,33 @@
+﻿@model MvcStok.Models.Entity.TblURUNLER
+@{
+    ViewBag.Title = "Guncelle";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h2>Ürün Güncelleme Sayfası</h2>
+
+<form method="post">
+
+    @Html.TextBoxFor(m => m.URUNID, new { @class = "form-control" })
+
+    <br />
+
+    <label>Ürün Adı</label>
+    @Html.TextBoxFor(m => m.URUNAD, new { @class = "form-control" })
+    <br />
+    <label>Markası</label>
+    @Html.TextBoxFor(m => m.MARKA, new { @class = "form-control" })
+    <br />
+    <label>Kategori Adı</label>
+    @Html.TextBoxFor(m => m.URUNKATEGORI, new { @class = "form-control" })
+    <br />
+    <label>Fiyat</label>
+    @Html.TextBoxFor(m => m.FIYAT, new { @class = "form-control" })
+    <br />
+    <label>Stok Miktarı</label>
+    @Html.TextBoxFor(m => m.STOK, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-info">Güncelle</button>
+
+</form>
+

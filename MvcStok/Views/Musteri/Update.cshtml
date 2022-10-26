@@ -1,0 +1,25 @@
+﻿@model MvcStok.Models.Entity.TblMUSTERILER
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h2>Müşteri Güncelleme Sayfası</h2>
+
+<form method="post">
+
+    <input type="hidden" name="MUSTERIID" class="form-control" value="@Model.MUSTERIID" />
+
+    <br />
+
+    <label>Müşteri Adı</label>
+    <input type="text" name="MUSTERIAD" class="form-control" value="@Model.MUSTERIAD" required />
+    <br />
+    <label>Müşteri Soyadı</label>
+    <input type="text" name="MUSTERISOYAD" class="form-control" value="@Model.MUSTERISOYAD" required />
+    <br />
+
+    <button class="btn btn-info">Güncelle</button>
+
+</form>
+

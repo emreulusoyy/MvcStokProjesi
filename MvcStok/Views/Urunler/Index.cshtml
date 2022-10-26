@@ -1,0 +1,56 @@
+﻿@using MvcStok.Models.Entity
+@*@model PagedList.IPagedList<TblURUNLER>
+@using PagedList
+@using PagedList.Mvc*@
+@model List<TblURUNLER>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<table id="tbl3" class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Ürün ID</th>
+            <th>Ürün Adı</th>
+            <th>Markası</th>
+            <th>Kategori</th>
+            <th>Fiyat</th>
+            <th>Stok</th>
+            <th>Sil</th>
+            <th>Güncelle</th>
+            <th>Alert</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th>@item.URUNID</th>
+                <td>@item.URUNAD</td>
+                <td>@item.MARKA</td>
+                <td>@item.TblKATEGORILER.KATEGORIAD</td>
+                <td>@item.FIYAT</td>
+                <td>@item.STOK</td>
+                <td> <a href="/Urunler/Sil/@item.URUNID" class="btn btn-danger">Sil</a></td>
+                <td> <a href="/Urunler/Guncelle/@item.URUNID" class="btn btn-primary">Güncelle</a></td>
+                <td>@Html.ActionLink("Sil Butonu", "Sil", new { id = item.URUNID }, new { @class = "btn btn-warning", onclick = "return confirm('Gerçekten Silmek istiyor Musunuz')" })</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a href="/Urunler/UrunEkle/" class="btn btn-success">Yeni Ürün Ekle</a>
+@*@Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Index", new { sayfa }))*@
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
+
+<script>
+    $('#tbl3').dataTable({});
+</script>

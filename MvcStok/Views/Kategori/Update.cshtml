@@ -1,0 +1,22 @@
+﻿@model MvcStok.Models.Entity.TblKATEGORILER
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h2>Güncelleme Sayfası</h2>
+
+<form method="post">
+
+    <input type="hidden" name="KATEGORIID" class="form-control" value="@Model.KATEGORIID" />
+
+    <br />
+
+    <label>Kategori Adı</label>
+    <input type="text" name="KATEGORIAD" class="form-control" value="@Model.KATEGORIAD" required />
+    <br />
+
+    <button class="btn btn-info">Güncelle</button>
+
+</form>
+

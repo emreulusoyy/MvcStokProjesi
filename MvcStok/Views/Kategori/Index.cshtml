@@ -1,0 +1,49 @@
+﻿@using MvcStok.Models.Entity
+@model PagedList.IPagedList<TblKATEGORILER>
+@using PagedList
+@using PagedList.Mvc
+@*@model List<TblKATEGORILER>*@
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<table id="tbl2" class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Kategori ID</th>
+            <th>Kategori Adı</th>
+            <th>Sil</th>
+            <th>Güncelle</th>
+            <th>Alert</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th>@item.KATEGORIID</th>
+                <th>@item.KATEGORIAD</th>
+                <td> <a href="/Kategori/Sil/@item.KATEGORIID" class="btn btn-danger">Sil</a></td>
+                <td> <a href="/Kategori/Update/@item.KATEGORIID" class="btn btn-primary">Güncelle</a></td>
+                <td>@Html.ActionLink("Sil Butonu", "Sil", new { id = item.KATEGORIID }, new { @class = "btn btn-warning", onclick = "return confirm('Gerçekten Silmek istiyor Musunuz')" })</td>
+            </tr>
+
+        }
+    </tbody>
+</table>
+<a href="/Kategori/YeniKategori/" class="btn btn-success">Yeni Kategori Ekle</a>
+
+@Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Index", new { sayfa }))
+@*<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
+
+<script>
+    $('#tbl2').dataTable({});
+</script>*@
